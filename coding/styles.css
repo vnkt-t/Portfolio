@@ -1,0 +1,270 @@
+/* Basic styling */
+body {
+    font-family: 'Inter', sans-serif; /* Updated font family */
+    line-height: 1.6;
+    background-color: #000; /* Set background to black */
+    overflow-x: hidden; /* Disable horizontal overflow */
+    overflow-y: hidden; /* Disable vertical overflow */
+    white-space: nowrap; /* Prevent line breaks */
+    position: relative;
+}
+
+#particles-js {
+    position: fixed; /* Ensure particles cover entire background */
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    justify-content: flex-start; /* Align items to the start */
+    align-items: center; /* Center content vertically */
+    white-space: nowrap; /* Prevent line breaks */
+    padding-left: 360px; /* Ensure the first card is fully visible */
+}
+
+.section {
+    min-width: 60vw; /* Adjusted width for less spacing */
+    height: 100vh;
+    display: flex; /* Use flex for layout */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    padding: 20px;
+}
+
+/* Updated Navigation Bar CSS */
+.main-nav {
+    text-align: center; /* Center the navigation */
+    width: 100%; /* Take full width to center content */
+    background-color: transparent; /* Optional: makes background of nav transparent */
+}
+
+.main-nav ul {
+    list-style: none; /* Removes bullet points from list */
+    padding: 0;
+    display: inline-block; /* Aligns the list items in a row */
+    margin: 0 auto; /* Center align the navigation */
+}
+
+.main-nav li {
+    display: inline; /* List items inline */
+}
+
+.main-nav a {
+    color: white; /* Set text color to white */
+    padding: 10px 15px; /* Padding around the links */
+    text-decoration: none; /* Removes underline from links */
+    font-weight: 700; /* Makes font bold */
+    font-size: 16px; /* Adjust the font size as needed */
+}
+
+/* Card styles and glow effect */
+:root {
+    --bg-color: rgb(20, 20, 20);
+    --card-color: rgb(23, 23, 23);
+}
+
+#cards {
+    display: flex;
+    gap: 20px; /* Add gap between cards */
+    align-items: center; /* Center align vertically */
+    white-space: nowrap; /* Prevent line breaks */
+}
+
+#cards:hover > .card::after {
+    opacity: 1;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 300px;
+    height: 260px; /* Default height for other cards */
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+    margin-right: 20px; /* Ensure spacing between cards */
+}
+
+.special-card {
+    width: 420px; /* Adjust this value to make it a square */
+    height: 420px; /* Adjust this value to make it a square */
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+}
+
+.special-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card::before,
+.card::after {
+    border-radius: inherit;
+    content: "";
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transition: opacity 500ms;
+    width: 100%;
+}
+
+.card::before {
+    background: radial-gradient(
+        800px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(255, 255, 255, 0.06),
+        transparent 40%
+    );
+    z-index: 3;
+}
+
+.card::after {  
+    background: radial-gradient(
+        600px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(255, 255, 255, 0.4),
+        transparent 40%
+    );
+    z-index: 1;
+}
+
+.card > .card-content {
+    background-color: var(--card-color);
+    border-radius: inherit;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    inset: 1px;
+    padding: 20px; /* Add padding to the card content */
+    position: absolute;
+    z-index: 2;
+    text-align: center; /* Center text */
+}
+
+/* Card content styles */
+h1, h2, h3, h4, span {
+    color: rgb(240, 240, 240);
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    margin: 0;
+}
+
+i {  
+    color: rgb(240, 240, 240);
+}
+
+.card-image {
+    align-items: center;
+    display: flex;
+    height: 140px;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.card-image > i {
+    font-size: 6em;
+    opacity: 0.25;
+}
+
+.card-info-wrapper {
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center; /* Center content horizontally */
+    padding: 0 20px;
+}
+
+.card-info {
+    align-items: center;
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    gap: 10px;
+}
+
+.card-info > i {  
+    font-size: 1em;
+    height: 20px;
+    line-height: 20px;
+}
+
+.card-info-title > h3 {
+    font-size: 1.1em;
+    line-height: 20px;
+}
+
+.card-info-title > h4 {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85em;
+    margin-top: 8px;
+}
+
+/* Responsiveness */
+@media(max-width: 1000px) {
+    body {
+        align-items: flex-start;  
+        overflow: auto;
+    }
+
+    #cards {    
+        max-width: 1000px;
+        padding: 10px 0;
+    }
+
+    .card {
+        flex-shrink: 1;
+        width: calc(50% - 4px);
+    }
+}
+
+@media(max-width: 500px) {
+    .card {
+        height: 180px;
+    }
+
+    .card-image {
+        height: 80px;  
+    }
+
+    .card-image > i {
+        font-size: 3em;
+    }
+
+    .card-info-wrapper {
+        padding: 0 10px;
+    }
+
+    .card-info > i { 
+        font-size: 0.8em; 
+    }
+
+    .card-info-title > h3 {
+        font-size: 0.9em;
+    }
+
+    .card-info-title > h4 {
+        font-size: 0.8em;
+        margin-top: 4px;
+    }
+}
+
+@media(max-width: 320px) {
+    .card {
+        width: 100%;
+    }
+}
